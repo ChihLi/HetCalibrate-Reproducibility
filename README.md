@@ -6,7 +6,7 @@ October 11, 2022
 
 This instruction aims to reproduce the results in the paper
 “*Calibration of Inexact Computer Models with Heteroscedastic Errors*”
-by Sung et al (2023+) in SIAM/ASA Journal on Uncertainty Quantification.
+by [Sung, Barber, and Walker (2023+)](https://arxiv.org/abs/1910.11518) in SIAM/ASA Journal on Uncertainty Quantification.
 
 The code folder reproduces the results in the Sections 4 and 5 of the
 manuscript.
@@ -45,12 +45,9 @@ library(SLHD)
 source("Example 1d_F1.R")
 ```
 
-    ## [1] -0.278369
-    ## [1] 0.7841435
-    ## [1] 0.2673526
-    ## [1] 1.127636
-    ## [1] -0.1727379
-    ## [1] 0.5826703
+    ## ============= WLS parameter: -0.278369 =============
+    ## ============= HomGP parameter: 0.2673526 =============
+    ## ============= HetOGP parameter: -0.1727379 =============
 
 <img src="README_files/figure-gfm/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
@@ -79,6 +76,8 @@ source("Example 1d_T1.R")
 ```
 
 ## Reproducing Section 4.2: Figure 4
+
+This could take a long time, so the code is not run here.
 
 ``` r
 source("Example 3d.R")
@@ -134,7 +133,7 @@ for(co2.type in c("ambient", "hi")){
     lower <- 0.01 * max(X0)
     upper <- 2.5 * max(X0)
 
-    ## Het with orthogonality ------------------------------------------------------------
+    ## Het with orthogonality 
     model <- vector("list", 3)
     jj <- 0
     for(cpara.init in cpara_init.vt){

@@ -63,8 +63,7 @@ cpara.WLS <- optim(seq(cpara_min, cpara_max, length.out = 11)[min.index],
                    lower = cpara_min, upper = cpara_max, method = "L-BFGS-B")$par
 xgrid <- matrix(seq(min(X0), max(X0), length.out = 101), ncol = 1) 
 predictions.WLS <- f.sim(xgrid, cpara.WLS)
-print(cpara.WLS)
-print(sqrt(mean((p.fun(xgrid) -f.sim(xgrid, cpara.WLS))^2)))
+cat("============= WLS parameter:", cpara.WLS, "=============\n")
 
 ## KO
 model <- vector("list", 3)
@@ -81,8 +80,7 @@ llmax.index <- which.max(sapply(model, function(x) x$ll))
 model <- model[[llmax.index]]
 cpara.Hom <- model$cpara
 predictions.Hom <- predict(x = xgrid, object =  model)
-print(cpara.Hom)
-print(sqrt(mean((p.fun(xgrid) -f.sim(xgrid, cpara.Hom))^2)))
+cat("============= HomGP parameter:", cpara.Hom, "=============\n")
 
 ## our model
 model <- vector("list", 3)
@@ -100,8 +98,7 @@ llmax.index <- which.max(sapply(model, function(x) x$ll))
 model <- model[[llmax.index]]
 cpara.Het.OGP <- model$cpara
 predictions.Het <- predict(x = xgrid, object =  model)
-print(cpara.Het.OGP)
-print(sqrt(mean((p.fun(xgrid) -f.sim(xgrid, cpara.Het.OGP))^2)))
+cat("============= HetOGP parameter:", cpara.Het.OGP, "=============\n")
 
 par(mfrow=c(2,3), oma=c(4.5, 4, 0, 2.5), mar=c(0.5,0.5,1.5,0.5))
 ## mean process
@@ -155,4 +152,3 @@ points(X0, sapply(unstack(data.frame(Z,rep(1:length(X0),n.rep))), var), col = 1,
 lines(xgrid, predictions.Het$nugs, col = 2, lwd = 2)
 mtext("x", 1, 3, las = 0)
 
-#7 X 4.5
