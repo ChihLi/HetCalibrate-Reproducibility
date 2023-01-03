@@ -6,7 +6,7 @@ October 11, 2022
 
 This instruction aims to reproduce the results in the paper
 “*Calibration of Inexact Computer Models with Heteroscedastic Errors*”
-by [Sung, Barber, and Walker (2023+)](https://arxiv.org/abs/1910.11518)
+by [Sung, Barber, and Walker (2022)](https://epubs.siam.org/doi/10.1137/21M1417946)
 in SIAM/ASA Journal on Uncertainty Quantification.
 
 The code folder reproduces the results in the Sections 4 and 5 of the
